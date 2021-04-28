@@ -9,6 +9,26 @@
   </head>
 
   <body>
+    <header>
+      <nav>
+        <div>
+          <span>
+            永野CAKE
+          </span>
+          <div>
+            <ul>
+              <li>HOME</li>
+              <li><%= link_to "ABOUT", about_path %></li>
+              <li><%= link_to "Sign Up", new_customer_session_path %></li>
+              <li><%= link_to "Log in", new_customer_registration_path %></li>
+            </ul>
+          </div>
+        </div>
+        
+      </nav>
+      
+    </header>
+    
     <%= yield %>
   </body>
 </html>
