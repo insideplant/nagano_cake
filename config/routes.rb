@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   devise_for :admins
   devise_for :customers
 
@@ -14,8 +14,9 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    get 'homes/top'
+    root to: 'homes#top'
     get 'order_details/update'
+    resources :customers, only:[:index, :show, :edit, :update]
     resources :orders, only:[:edit, :update]
     resources :genres, only:[:index, :create, :edit, :update]
     resources :products, only:[:index, :new, :create, :show, :edit, :update]

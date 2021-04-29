@@ -1,12 +1,16 @@
 <h1>ITEM Index</h1>
 <p>Find me in app/views/admin/products/index.html.erb</p>
 
+<div>
+<h2>アイテム一覧<h2>
 <% @items.each do |item| %>
  <div>
   <%= attachment_image_tag item, :image %>
   <p>ジャンル<%= item.genre_id %></p>
-  <p>商品名<%= item.name %></p>
+  <p>商品名<%= link_to item.name,admin_product_path(item.id) %></p>
   <p>価格<%= item.price %></p>
   <p>説明<%= item.introduction %></p>
  </div>
 <% end %>
+</div>
+
