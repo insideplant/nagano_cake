@@ -1,14 +1,13 @@
 <h1>商品リスト</h1>
 <p>Find me in app/views/public/items/index.html.erb</p>
 
-<%= link_to "新規投稿", new_admin_products_path %>
 
-<% @items.each do |item| %>
 <div>
+  <% @items.each do |item| %>
   <%= attachment_image_tag item, :image %>
   <p>ジャンル<%= item.genre_id %></p>
   <p>商品名<%= item.name %></p>
   <p>価格<%= item.price %></p>
   <p>説明<%= item.introduction %></p>
- </div>
-<% end %>
+  <% end %>
+</div>

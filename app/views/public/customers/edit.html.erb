@@ -2,11 +2,11 @@
 <p>Find me in app/views/public/customers/edit.html.erb</p>
 
 <div>
-  <%= form_with @customer, local:true do |f| %>
-    <p>性<%= f.text_field :last_name %>名<%= f.text_field :first_name %></p>
+  <%= form_with model:current_customer, url:'/customers/mypage/update', local:true do |f| %>
+    <p>姓<%= f.text_field :last_name %>名<%= f.text_field :first_name %></p>
     <p>セイ<%= f.text_field :last_name_kana %>メイ<%= f.text_field :last_name_kana %></p>
     <p>メールアドレス<%= f.email_field :email %></p>
-    <p>新しいパスワード<%= f.password_field :password %>
+    <p>新しいパスワード<%= f.password_field :encrypted_password %>
     　　新しいパスワードを再入力<%= f.password_field :password_confirmation %></p>
     <p>郵便番号</p>
     <%= f.text_field :postal_code%>
@@ -14,5 +14,7 @@
     <%= f.text_field :address%>
     <p>電話番号</p>
     <%= f.text_field :telephone_number%>
+    <%= f.submit :"更新" %>
+  <% end %>
 
 </div>
