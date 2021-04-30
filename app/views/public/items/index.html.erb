@@ -1,13 +1,15 @@
-<h1>商品リスト</h1>
-<p>Find me in app/views/public/items/index.html.erb</p>
 
-
-<div>
+<div class="container">
+  <h1>商品リスト</h1>
+  <div class="row d-flex">
   <% @items.each do |item| %>
-  <%= attachment_image_tag item, :image %>
+  <div class="col">
+  <%= attachment_image_tag item, :image, :fill, 100,100, fallback: "no_image.jpg", size:'100x100' %>
   <p>ジャンル<%= item.genre_id %></p>
-  <p>商品名<%= item.name %></p>
+  <p>商品名<%= link_to item.name,admin_product_path(item) %></p>
   <p>価格<%= item.price %></p>
   <p>説明<%= item.introduction %></p>
+  </div>
   <% end %>
+  </div>
 </div>
