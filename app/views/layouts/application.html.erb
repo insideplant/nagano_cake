@@ -3,41 +3,49 @@
   <head>
     <title>NaganoCake</title>
     <%= csrf_meta_tags %>
-    
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <header>
-      <nav class="navbar navbar-light bg-warning">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-          <%= link_to root_path, class: "navbar-brand" do %><span>永野CAKE</span>
+          <%= link_to root_path, class: "fas fa-birthday-cake navbar-brand nav-link text_light" do %><span> 永野CAKE</span>
           <% end %>
+
           
           <div>
-            <ul class="navbar-nav">
+            <ul class="navbar-nav ml-auto">
               <% if customer_signed_in? %>
-              <li>HOME</li>
-              <p><%= current_user.name%></p>
-              <li>HOME</li>
-              <li><%= link_to "Online shop", items_path, class: "nav-link text_light" %></li>
-              <li><%= link_to "ABOUT", about_path %></li>
-              <li><%= link_to "Log out", destroy_admin_session_path %></li>
+              <li><%= link_to customers_mypage_path, class:"fas fa-user nav-link text_light" do %>
+                My Page
+               <% end %>
+              </li>
+              <li><%= link_to " Online shop", items_path, class:"fas fa-store nav-link text_light" %></li>
+              <li><%= link_to " About", about_path, class:"fas fa-info-circle nav-link text-light" %></li>
+              <li><%= link_to " Log out", destroy_customer_session_path, method: :delete, class:"fas fa-sign-out-alt nav-link text-light" %></li>
               <% else %>
-              <li><%= link_to "Online shop", items_path %></li>
-              <li><%= link_to "ABOUT", about_path %></li>
-              <li><%= link_to "Sign Up", new_admin_registration_path %></li>
-              <li><%= link_to "Log in", new_admin_session_path %></li>
+              <li><%= link_to " Online shop", items_path, class:"fas fa-store nav-link text-light" %></li>
+              <li><%= link_to " About", about_path, class:"fas fa-info-circle nav-link text-light" %></li>
+              <li><%= link_to " Sign Up", new_customer_registration_path, class:"fas fa-user-plus nav-link text-light" %></li>
+              <li><%= link_to " Log in", new_customer_session_path, class:"fas fa-sign-in-alt nav-link text-light" %></li>
               <% end %>
             </ul>
           </div>
         </div>
-
       </nav>
 
     </header>
-
-    <%= yield %>
+    <main>
+      <%= yield %>
+    </main>
+    <footer style="background-color: #FFFF00;">
+      <div class="container mt-5">
+        <div class="row">
+          <div class="mx-auto"><p>CopyRight NaganoCake.inc</p></div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

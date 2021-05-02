@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
   devise_for :admins
-  devise_for :customers
+  devise_for :customers, controllers: {
+    sessions: "customers/sessions",
+    registrations: "customers/registrations"
+  }
 
   scope module: :public  do
     root to: 'homes#top'
