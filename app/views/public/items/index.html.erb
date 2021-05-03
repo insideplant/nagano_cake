@@ -8,13 +8,25 @@
 
   <div class="row d-flex">
     <% @items.each do |item| %>
-    <div class="col-sm-2">
+     <div class="col-sm-2">
       <%= attachment_image_tag item, :image, :fill, 150,150, fallback: "no_image.jpg", size:'150x150' %>
-      <p>ジャンル<%= item.genre_id %></p>
-      <p>商品名<%= link_to item.name,item_path(item) %></p>
-      <p>価格<%= item.price %></p>
-      <p>説明<%= item.introduction %></p>
-    </div>
+        <p>ジャンル<%= item.genre_id %></p>
+        <p>商品名<%= link_to item.name,item_path(item) %></p>
+        <p>価格<%= item.price %></p>
+        <p>説明<%= item.introduction %></p>
+        
+        <%= form_with model:@cart_item, url:cart_items_path(item.id), local:true do |f| %>
+          <div class="form-group">
+            <label class="form-cotrol-label">個数</label>
+            <%= f.hidden_field :item_id :value => item.id %>
+            <%= f.number_field :amount %>
+            <%= f.button :type => "submit", style: 'border-style: none;' do %>
+              <i class="fas fa-cart-plus" %></i>
+            <% end %>
+          </div>
+      <% end %>
+     </div>
     <% end %>
+    
   </div>
 </div>

@@ -10,9 +10,9 @@
     <% @cart_items.each do |cart_item| %>
     <div class="col-sm-2">
       <%= attachment_image_tag item, :image, :fill, 150,150, fallback: "no_image.jpg", size:'150x150' %>
-      <p>ジャンル<%= item.genre_id %></p>
-      <p>商品名<%= link_to item.name,item_path(item) %></p>
-      <p>価格<%= item.price %></p>
+      <p>ジャンル<%= cart_item.item.genre_id %></p>
+      <p>商品名<%= link_to cart_item.item.name,item_path(item) %></p>
+      <p>価格<%= cart_item.item.price %></p>
       <p>個数<%= cart_item.amount %></p>
     </div>
     <% end %>

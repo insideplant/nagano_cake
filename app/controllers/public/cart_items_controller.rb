@@ -13,5 +13,6 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
+    cart_item = CartItem.new()
   end
 end
