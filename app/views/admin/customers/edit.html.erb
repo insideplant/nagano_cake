@@ -1,14 +1,59 @@
-<h1>Admin::Customers#edit</h1>
-<p>Find me in app/views/admin/customers/edit.html.erb</p>
-
+ <div class="container">
+    <h1>User info edit</h1>
+    <div class="border-top border-dark" style="padding:5px;"></div><br>
+    <div class="text-right">
+    </div>
   <div>
-    <p>id</p>
-    <p>性名</p>
-    <p>性名カナ</p>
-    <p>退会ステータス</p>
-    <p>メールアドレス</p>
-    <p>パスワード</p>
-    <p>郵便番号</p>
-    <p>作成日時</p>
-    <p>更新日時</p>
-  </div>
+  <%= form_with model:@customer, url:admin_customer_path(@customer.id), local:true do |f| %>
+    <div class="mb-3 row">
+      <label class="col-sm-2 col-form-label">User Name</label>
+      <%= f.text_field :user_name, class: "col-sm-10 form-control" %>
+    </div>
+    
+    <div class="mb-3 row">
+      <label class="col-sm-2 col-form-label">First Name</label>
+      <%= f.text_field :first_name, class: "col-sm-10 form-control" %>
+    </div>
+    
+     <div class="mb-3 row">
+      <label class="col-sm-2 col-form-label">Last Name</label>
+      <%= f.text_field :last_name, class: "col-sm-10 form-control" %>
+    </div>
+    
+    <div class="mb-3 row">
+      <label class="col-sm-2 col-form-label">First Name_kana</label>
+      <%= f.text_field :first_name_kana, class: "col-sm-10 form-control" %>
+    </div>
+    
+    <div class="mb-3 row">
+      <label class="col-sm-2 col-form-label">Last Name_kana</label>
+      <%= f.text_field :last_name_kana, class: "col-sm-10 form-control" %>
+    </div>
+    
+    <div class="mb-3 row">
+      <label class="col-sm-2 col-form-label">Postal Code</label></label>
+      <%= f.text_field :postal_code, class: "col-sm-10 form-control" %>
+    </div>
+    
+    <div class="mb-3 row">
+      <label class="col-sm-2 col-form-label">Email</label>
+      <%= f.text_field :email, class: "col-sm-10 form-control" %>
+    </div>
+    
+    <div class="mb-3 row">
+      <label class="col-sm-2 col-form-label">Address</label>
+      <%= f.text_field :address, class: "col-sm-10 form-control" %>
+    </div>
+    
+    <div class="mb-3 row">
+      <label class="col-sm-2 col-form-label">Telephone Number</label>
+      <%= f.text_field :telephone_number, class: "col-sm-10 form-control" %>
+    </div>
+    
+    <div class="form-group">
+      <div class="text-right">
+      <%= f.submit :"Save Changes", class: "btn btn-secondary" %>
+      </div>
+    </div>
+  <% end %>
+ </div>

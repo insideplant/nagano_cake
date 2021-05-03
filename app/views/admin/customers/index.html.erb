@@ -1,25 +1,27 @@
-<h1>顧客一覧</h1>
 
-
-<div>
-  <table>
+<div class="container">
+  <h1>User index</h1>
+  <div class="border-top border-dark" style="padding:5px;"></div><br>
+  <table class="table table-striped">
    <thody>
     <tr>
      <th>id</th>
-     <th>性名</th>
-     <th>性名カナ</th>
-     <th>退会ステータス</th>
-     <th>詳細</th>
+     <th>User Name</th>
+     <th>Name</th>
+     <th>Name_kana</th>
+     <th>Status</th>
+     <th>Details</th>
     </tr>
    </thody>
    <thody>
     <% @customers.each do |customer| %>
      <tr>
       <td><%= customer.id %></td>
-      <td><%= @customer.last_name %><%= @customer.first_name %></td>
-      <td><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
-      <td><%= @customer.is_active %></td>
-      <td><%= link_to "詳細", admin_custmer_path(customer) %></td>
+      <td><%= customer.user_name %></td>
+      <td><%= customer.last_name %><%= customer.first_name %></td>
+      <td><%= customer.last_name_kana %><%= customer.first_name_kana %></td>
+      <td><%= customer.is_active %></td>
+      <td><%= link_to "Details", admin_customer_path(customer.id) %></td>
       </tr>
     <% end %>
    </thody>

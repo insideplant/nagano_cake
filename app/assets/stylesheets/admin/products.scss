@@ -1,3 +1,13 @@
 // Place all the styles related to the admin/products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+p {
+    /* ルート要素の文字サイズを変更する */
+    font-size: 5px;
+    margin-top: 30px;
+} 
+
+div {
+  margin-top: 10px;
+}

@@ -1,15 +1,49 @@
-<h1>顧客詳細</h1>
-
+ <div class="container">
+    <h1>User info</h1>
+    <div class="border-top border-dark" style="padding:5px;"></div><br>
+    <div class="text-right">
+    <%= link_to " Edit", edit_admin_customer_path(@customer.id), class:"btn btn-secondary btn-lg" %>
+    </div>
   <div>
-    <p>id</p>
-    <p>性名</p>
-    <p>性名カナ</p>
-    <p>退会ステータス</p>
-    <p>メールアドレス</p>
-    <p>パスワード</p>
-    <p>郵便番号</p>
-    <p>作成日時</p>
-    <p>更新日時</p>
-    
-    <%= link_to "編集",edit_admin_customer %>
+  <table class="table table-striped">
+   <thody>
+     <tr>
+      <td>Name</td>
+      <td><%= @customer.last_name%><%= @customer.first_name%></td>
+     </tr>
+     <tr>
+      <td>Name_kana</td>
+      <td><%= @customer.last_name_kana%><%= @customer.first_name_kana%></td>
+     </tr>
+     <tr>
+      <td>Status</td>
+      <td><%= @customer.is_active%></td>
+     </tr>
+     <tr>
+      <td>Email</td>
+      <td><%= @customer.email%></td>
+     </tr>
+     <tr>
+      <td>Postal Code</td>
+      <td><%= @customer.postal_code%></td>
+     </tr>
+     <tr>
+      <td>Address</td>
+      <td><%= @customer.address%></td>
+     </tr>
+     <tr>
+      <td>Phone Number</td>
+      <td><%= @customer.telephone_number%></td>
+     </tr>
+     <tr>
+      <td>Create</td>
+      <td><%= @customer.created_at%></td>
+     </tr>
+     <tr>
+      <td>Update</td>
+      <td><%= @customer.updated_at%></td>
+     </tr>
+    </thody>
+   </table>
   </div>
+ </div>

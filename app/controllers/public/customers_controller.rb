@@ -4,12 +4,13 @@ class Public::CustomersController < ApplicationController
   end
 
   def edit
+    @customer = Customer.find(current_customer.id)
   end
 
   def update
     customer = Customer.find(current_customer.id)
     customer.update(customer_params)
-    redirect_to "/customers/mypage"
+    redirect_to customers_mypage_path
   end
 
   def active_confirm
@@ -20,7 +21,7 @@ class Public::CustomersController < ApplicationController
 
   private
   def customer_params
-    params.require(:customer).permit(:last_name, :first_name,:last_name_kana,:first_name_kana,:postal_code,:adress,:telephone_number,:is_active,:email,:encrypted_password)
+    params.require(:customer).permit(:user_name,:last_name, :first_name,:last_name_kana,:first_name_kana,:postal_code,:adress,:telephone_number,:is_active,:email,:encrypted_password,:password_confirmation)
   end
 
 end

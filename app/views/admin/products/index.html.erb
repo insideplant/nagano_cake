@@ -1,18 +1,20 @@
-<h1>ITEM Index</h1>
-
-<div>
-
-<%= link_to "商品投稿", new_admin_product_path %>
- 
-<h2>アイテム一覧<h2>
-<% @items.each do |item| %>
- <div>
-  <%= attachment_image_tag item, :image %>
-  <p>ジャンル<%= item.genre_id %></p>
-  <p>商品名<%= link_to item.name,admin_product_path(item.id) %></p>
-  <p>価格<%= item.price %></p>
-  <p>説明<%= item.introduction %></p>
+<div class="container">
+  <h1>Products</h1>
+  <div class="border-top border-dark" style="padding:5px;"></div><br>
+  <div >
+   <%= link_to " 商品投稿", new_admin_product_path, class:"btn btn-secondary btn-lg" %>
+  </div>
+  
+ <div class="row d-flex">
+  <% @items.each do |item| %>
+   <div class="col-sm-2 ">
+    <%= attachment_image_tag item, :image, :fill, 150,150, fallback: "no_image.jpg", size:'150x150' %>
+    <p>ジャンル： <%= item.genre_id %></p>
+    <p>商品名： <%= link_to item.name,item_path(item) %></p>
+    <p>価格： <%= item.price %></p>
+    <p>説明： <%= item.introduction %></p>
+   </div>
+   <% end %>
  </div>
-<% end %>
 </div>
 

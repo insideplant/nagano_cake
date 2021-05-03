@@ -1,2 +1,20 @@
-<h1>Public::CartItems#index</h1>
-<p>Find me in app/views/public/cart_items/index.html.erb</p>
+
+<div class="container">
+  <h1>Cart</h1>
+  <div class="border-top border-dark" style="padding:5px;"></div><br>
+  <div class="text-right">
+    <%= link_to " products", items_path, class:"fas fa-undo-alt btn btn-secondary btn-lg" %>
+  </div>
+  
+  <div class="row d-flex">
+    <% @cart_items.each do |cart_item| %>
+    <div class="col-sm-2">
+      <%= attachment_image_tag item, :image, :fill, 150,150, fallback: "no_image.jpg", size:'150x150' %>
+      <p>ジャンル<%= item.genre_id %></p>
+      <p>商品名<%= link_to item.name,item_path(item) %></p>
+      <p>価格<%= item.price %></p>
+      <p>個数<%= cart_item.amount %></p>
+    </div>
+    <% end %>
+  </div>
+</div>
