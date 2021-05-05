@@ -20,8 +20,8 @@ Rails.application.routes.draw do
     patch '/customers/not_active' => 'customers#not_active'
     
     
-    post '/orders/confirm' => 'customers#confirm'
-    get '/orders/complete' => 'customers#complete'
+    post '/orders/confirm' => 'orders#confirm'
+    get '/orders/complete' => 'orders#complete'
     resources :orders, only:[:new, :confirm, :complete, :create, :index, :show]
     resources :addresses, only:[:index, :edit, :create, :update, :destroy]
     resources :items, only:[:show, :index]

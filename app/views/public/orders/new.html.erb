@@ -8,14 +8,14 @@
       <legend class="row">支払い方法</legend>
       <div class="row">
         <div class="form-check">
-          <%= f.radio_button :payment_method_option, 0, :true %> 
+          <%= f.radio_button :payment_method_option, 0 %> 
           <label class="form-check-label">クレジットカード</label>
         </div>
       </div>
       
       <div class="row">
         <div class="form-check">
-          <%= f.radio_button :payment_method_option, 1, :true %> 
+          <%= f.radio_button :payment_method_option, 1 %> 
           <label class="form-check-label">銀行振り込み</label>
         </div>
       </div>
@@ -25,7 +25,7 @@
       <legend class="row">お届け先</legend>
       <div class="row">
         <div class="form-check">
-          <%= f.radio_button :address_option, 0, :true %> 
+          <%= f.radio_button :address_option, 0 %> 
           <label class="form-check-label">ご自身の住所</label>
         </div>
         <%= current_customer.postal_code%><%= current_customer.address%>
@@ -33,14 +33,14 @@
       </div>
       <div class="row">
         <div class="form-check">
-          <%= f.radio_button :address_option, 1, :true %> 
+          <%= f.radio_button :address_option, 1 %> 
           <label class="form-check-label">登録済住所から選択</label>
           <%= f.collection_select :address, @addresses, :id, :address, include_blank: "選択して下さい", class:"form-control"  %>
         </div>
       </div>
       <div class="row">
         <div class="form-check">
-          <%= f.radio_button :address_option, 2, :true %> 
+          <%= f.radio_button :address_option, 2 %> 
           <label class="form-check-label">新しいお届け先</label>
           <div class="field">
             <label class="row inline-text">郵便番号(ハイフンなし)</label>%>

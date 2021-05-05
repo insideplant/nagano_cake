@@ -1,13 +1,17 @@
 class Public::OrdersController < ApplicationController
   def new
     @addresses = Address.all
+    @order = Order.all
   end
 
   def confirm
      @order = Order.new(order_params)
-
-    if find(params[:address_option])
-
+    if @order.find_by(payment_method_option: 0 ) 
+     @payment_method = "クレジット"
+     
+    else
+      @order.find_by(payment_method_option: 1 ) 
+      @payment_method = "銀行振り込み"
     end
   end
 

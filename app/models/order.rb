@@ -4,6 +4,6 @@ class Order < ApplicationRecord
   
   validates :postal_code,:address,:customer_name,:shipping_fee,:payment_amount,:payment_method,:status, presence: true
   
-  enum payment_method_option: { credit: 0, ginko: 1 }
+  enum payment_method_option: { credit: 0, bank_transfar: 1 }
   
 end
