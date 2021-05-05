@@ -1,0 +1,25 @@
+<div class="container">
+  <h1>Order index</h1>
+  <div class="border-top border-dark" style="padding:5px;"></div><br>
+  <table class="table table-striped">
+   <thead class="thead-dark">
+    <tr>
+     <th>Buying Date</th>
+     <th>Name</th>
+     <th>Amount</th>
+     <th>Status</th>
+    </tr>
+   </thead>
+   <thody>
+    <% @customers.each do |customer| %>
+     <tr>
+      <td><%= customer.id %></td>
+      <td><%= link_to customer.user_name, admin_order_detail_path(customer.id) %></td>
+      <td><%= customer.last_name %><%= customer.first_name %></td>
+      <td><%= order.amount %></td>
+      <td><%= order.is_active %></td>
+     </tr>
+    <% end %>
+   </thody>
+  </table>
+</div>

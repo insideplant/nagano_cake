@@ -4,7 +4,24 @@
         <span>試してみたい、色がある。</span></h1>
         <%= link_to "Sign Up", new_customer_registration_path,
         class: "btn btn-secondary btn-lg" %>
+        <div class="row">
+        <p>ようこそ、ながのCAKEへ！</br>
+        このサイトは、ケーキ販売のECサイトになります。</br>
+        会員でない⽅も商品の閲覧はできますが、</br>
+        購⼊には会員登録が必要になります。</p>
+        </div>
     </div>
     
+        <h2>New Products</h2>
+    <div class="row d-flex">
+        <% @items.each do |item| %>
+         <div class="col-sm-2">
+          <%= attachment_image_tag item, :image, :fill, 150,150, fallback: "no_image.jpg", size:'150x150' %>
+            <p>商品名<%= link_to item.name,item_path(item) %></p>
+            <p>価格<%= item.price %></p>
+         </div>
+        <% end %>
+    </div>
+
 </div>
 

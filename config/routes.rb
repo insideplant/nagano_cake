@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     sessions: "admins/sessions",
     registrations: "admins/registrations"
   }
-  
+
   devise_for :customers, controllers: {
     sessions: "customers/sessions",
     registrations: "customers/registrations"
@@ -18,8 +18,12 @@ Rails.application.routes.draw do
     patch '/customers/mypage/update' => 'customers#update'
     get '/customers/acitve_confirm' => 'customers#acitve_confirm'
     patch '/customers/not_active' => 'customers#not_active'
-    resources :addresses, only:[:index, :edit, :create, :update, :destroy]
+    
+    
+    post '/orders/confirm' => 'customers#confirm'
+    get '/orders/complete' => 'customers#complete'
     resources :orders, only:[:new, :confirm, :complete, :create, :index, :show]
+    resources :addresses, only:[:index, :edit, :create, :update, :destroy]
     resources :items, only:[:show, :index]
     resources :cart_items, only:[:index, :update, :destroy, :destroy_all, :create]
   end

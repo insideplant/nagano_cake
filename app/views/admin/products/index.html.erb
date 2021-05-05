@@ -1,7 +1,7 @@
 <div class="container">
-  <h1>Products</h1>
+  <h1>Product Index</h1>
   <div class="border-top border-dark" style="padding:5px;"></div><br>
-  <div >
+  <div>
    <%= link_to " 商品投稿", new_admin_product_path, class:"btn btn-secondary btn-lg" %>
   </div>
   
@@ -10,7 +10,7 @@
    <div class="col-sm-2 ">
     <%= attachment_image_tag item, :image, :fill, 150,150, fallback: "no_image.jpg", size:'150x150' %>
     <p>ジャンル： <%= item.genre_id %></p>
-    <p>商品名： <%= link_to item.name,item_path(item) %></p>
+    <p>商品名： <%= link_to item.name,admin_product_path(item) %></p>
     <p>価格： <%= item.price %></p>
     <p>説明： <%= item.introduction %></p>
    </div>

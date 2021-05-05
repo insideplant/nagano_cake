@@ -14,25 +14,23 @@
           <%= link_to root_path, class: "fas fa-birthday-cake navbar-brand nav-link text_light" do %><span> 永野CAKE</span>
           <% end %>
 
-          
+
           <div>
             <ul class="navbar-nav ml-auto">
               <% if customer_signed_in? %>
-              <li><%= link_to customers_mypage_path, class:"fas fa-user nav-link text_light" do %>
-                My Page<% end %>
-              </li>
-              <li><%= link_to " Online shop", items_path, class:"fas fa-store nav-link text_light" %></li>
-              <li><%= link_to " About", about_path, class:"fas fa-info-circle nav-link text-light" %></li>
+              <li><%= link_to "My Page", customers_mypage_path, class:"fas fa-user nav-link text_light"%></li>
+              <li><%= link_to " Products", items_path, class:"fas fa-store nav-link text_light" %></li>
+              <li><%= link_to " Cart", cart_items_path, class:"fas fa-info-circle nav-link text-light" %></li>
               <li><%= link_to " Log out", destroy_customer_session_path, method: :delete, class:"fas fa-sign-out-alt nav-link text-light" %></li>
               <% elsif admin_signed_in? %>
               <li><%= link_to " Items", admin_products_path, class:"nav-link text_light" %></li>
               <li><%= link_to " Customers", admin_customers_path, class:"nav-link text-light" %></li>
               <li><%= link_to " Orders", admin_orders_path, class:"nav-link text-light" %></li>
-              <li><%= link_to " gunres", admin_genres_path, method: :delete, class:"nav-link text-light" %></li>
+              <li><%= link_to " genres", admin_genres_path, class:"nav-link text-light" %></li>
               <li><%= link_to " Log out", destroy_admin_session_path, method: :delete, class:"nav-link text-light" %></li>
               <% else %>
-              <li><%= link_to " Online shop", items_path, class:"fas fa-store nav-link text-light" %></li>
               <li><%= link_to " About", about_path, class:"fas fa-info-circle nav-link text-light" %></li>
+              <li><%= link_to " Products", items_path, class:"fas fa-store nav-link text-light" %></li>
               <li><%= link_to " Sign Up", new_customer_registration_path, class:"fas fa-user-plus nav-link text-light" %></li>
               <li><%= link_to " Log in", new_customer_session_path, class:"fas fa-sign-in-alt nav-link text-light" %></li>
               <% end %>

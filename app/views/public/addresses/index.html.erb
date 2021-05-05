@@ -1,2 +1,36 @@
-<h1>Public::Addresses#index</h1>
-<p>Find me in app/views/public/addresses/index.html.erb</p>
+<div class="container">
+  <h1>Add Addresses</h1>
+  <div class="border-top border-dark" style="padding:5px;"></div><br>
+  <div>
+   <%= form_with model:@new_address, url:addresses_path, local:true do |f| %>
+   <label class="form-control-label">Postal code</label>
+   <%= f.text_field :postal_code %>
+   <label class="form-control-label">Address</label>
+   <%= f.text_field :address %>
+   <label class="form-control-label">Name</label>
+   <%= f.text_field :customer_name %>
+   <%= f.submit 'New', class:"btn btn-secondary btn-sm" %>
+   <% end %>
+  </div>
+
+  <table class="table table-striped">
+   <thead class="thead-dark">
+    <tr>
+     <th>Postal Code</th>
+     <th>Address</th>
+     <th>name</th>
+     <th></th>
+    </tr>
+   </thead>
+   <thody>
+    <% @addresses.each do |address| %>
+     <tr>
+      <td><%= address.postal_code %></td>
+      <td><%= address.address %></td>
+      <td><%= address.customer_name %></td>
+      <td> <%= link_to "Edit", edit_address_path(address), class:"btn btn-secondary btn-sm" %></td>
+     </tr>
+    <% end %>
+   </thody>
+  </table>
+</div>

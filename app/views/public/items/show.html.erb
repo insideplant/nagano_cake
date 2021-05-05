@@ -1,4 +1,3 @@
-
 <div class="container">
   <h1><%= @item.name %></h1>
   <div class="border-top border-dark" style="padding:5px;"></div><br>
@@ -11,9 +10,15 @@
       <%= attachment_image_tag @item, :image, :fill, 300,300, fallback: "no_image.jpg", size:'150x150' %>
     </div>
     <div class="col-sm-4 text-center">
-      <p>ジャンル<%= @item.genre_id %></p>
-      <p>価格<%= @item.price %></p>
+      <%= form_with model:@cart_item, url:cart_items_path, local:true do |f| %>
       <p>説明<%= @item.introduction %></p>
+      <p>ジャンル<%= @item.genre_id %></p>
+      <h4><span>¥<%= @item.price %></span></h4>
+      <%= f.hidden_field :item_id, :value => @item.id %>
+      <%= f.hidden_field :customer_id, :value => current_customer.id %>
+      <%= f.select :amount, options_for_select(2..10), include_blank: '1' %>
+      <%= f.submit "Cart in" %>
+      <% end %>
     </div>
   </div>
 </div>

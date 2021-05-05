@@ -8,20 +8,16 @@
   <table class="table table-striped">
    <thody>
      <tr>
+      <td>ID</td>
+      <td><%= @customer.id%></td>
+     </tr>
+     <tr>
       <td>Name</td>
       <td><%= @customer.last_name%><%= @customer.first_name%></td>
      </tr>
      <tr>
       <td>Name_kana</td>
       <td><%= @customer.last_name_kana%><%= @customer.first_name_kana%></td>
-     </tr>
-     <tr>
-      <td>Status</td>
-      <td><%= @customer.is_active%></td>
-     </tr>
-     <tr>
-      <td>Email</td>
-      <td><%= @customer.email%></td>
      </tr>
      <tr>
       <td>Postal Code</td>
@@ -36,14 +32,17 @@
       <td><%= @customer.telephone_number%></td>
      </tr>
      <tr>
-      <td>Create</td>
-      <td><%= @customer.created_at%></td>
+     <tr>
+      <td>Email</td>
+      <td><%= @customer.email%></td>
      </tr>
      <tr>
-      <td>Update</td>
-      <td><%= @customer.updated_at%></td>
+      <td>Status</td>
+      <td><%= @customer.is_active%></td>
      </tr>
     </thody>
    </table>
+   <%= link_to "Edit", edit_admin_customer_path(@customer), class:"btn btn-secondary btn-sm" %>
+   <%= link_to "Customers", admin_orders_path, class:"btn btn-secondary btn-sm" %>
   </div>
  </div>
