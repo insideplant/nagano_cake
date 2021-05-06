@@ -8,14 +8,14 @@
       <legend class="row">支払い方法</legend>
       <div class="row">
         <div class="form-check">
-          <%= f.radio_button :payment_method_option, 0 %> 
+          <%= f.radio_button :payment_method, "credit" %> 
           <label class="form-check-label">クレジットカード</label>
         </div>
       </div>
       
       <div class="row">
         <div class="form-check">
-          <%= f.radio_button :payment_method_option, 1 %> 
+          <%= f.radio_button :payment_method, "bank_transfar" %> 
           <label class="form-check-label">銀行振り込み</label>
         </div>
       </div>

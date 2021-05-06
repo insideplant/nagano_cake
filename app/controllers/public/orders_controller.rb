@@ -6,13 +6,16 @@ class Public::OrdersController < ApplicationController
 
   def confirm
      @order = Order.new(order_params)
-    if @order.find_by(payment_method_option: 0 ) 
-     @payment_method = "クレジット"
-     
+     @cart_items = CartItem.all
+    if @params[:order][:payment_method] == "credit"
+     return @payment_method = "クレジット"
     else
-      @order.find_by(payment_method_option: 1 ) 
-      @payment_method = "銀行振り込み"
+      return @payment_method = "銀行振り込み"
     end
+    
+     
+    
+    render :orders_confirm
   end
 
   def complete
@@ -21,7 +24,7 @@ class Public::OrdersController < ApplicationController
   def create
    @order = Order.new(order_params)
 　 if @order.save
-　　  redirect_to root_path, notice: 'ご注文を送信しました'
+　　  redirect_to orders_complete_path
 　　else
 　　  render :orders_confirm_path
 　　end
