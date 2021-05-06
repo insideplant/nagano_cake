@@ -19,6 +19,7 @@
                   小計
               </td>
           </tr>
+          <% sum = 0 %>
           <% @cart_items.each do |cart_item|%>
           <tr>
               <td>
@@ -35,6 +36,8 @@
               </td>
           </tr>
          </thody>
+         <% sub_total = cart_item.total_price.to_i  %>
+         <% sum+=sub_total %>
          <% end %>
       </table>
       <table class="table table-striped col-5">
@@ -44,7 +47,7 @@
                   送料
               </td>
               <td>
-                  
+                 ¥ 800
               </td>
           </tr>
           <tr>
@@ -52,8 +55,12 @@
                   商品合計
               </td>
               <td>
-                  請求金額
+                  ¥ <%= sum %>
               </td>
+          </tr>
+          <tr>
+              <td>請求金額</td>
+              <td>¥ <%= sum + 800 %></td>
           </tr>
          </thody>
           
@@ -66,20 +73,12 @@
           </div>
           <div>
               <span>お届け先</span>
-              <%= @payment_method}%>
+              <%= @payment_method %>
           </div>
           
       </div>
       
-      <%= form_with model:@order, url: orders_path, local:true do |f| %>
-       <%= f.hidden :postal_code, :value => @address.postal_code  %>
-       <%= f.hidden :address, :value => @order.address %>
-       <%= f.hidden :customer_name, :value => current_customer.name %>
-       <%= f.hidden :shipping_fee, :value => @address.postal_code  %>
-       <%= f.hidden :payment_amount, :value => @address.postal_code  %>
-       <%= f.hidden :payment_method, :value => @address.postal_code  %>
-       <%= f.hidden :status, :value => @address.postal_code  %>
-      <% end %>
+
       
   </div>
 

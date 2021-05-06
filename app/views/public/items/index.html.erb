@@ -7,11 +7,12 @@
 
   <div class="row d-flex">
     <% @items.each do |item| %>
-     <div class="col-sm-2">
+     <div class="col-sm-3">
       <%= attachment_image_tag item, :image, :fill, 150,150, fallback: "no_image.jpg", size:'150x150' %>
         <p>商品名<%= link_to item.name,item_path(item) %></p>
         <p>価格<%= item.price %></p>
     </div>
       <% end %>
+      
   </div>
 </div>

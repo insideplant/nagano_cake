@@ -7,13 +7,20 @@ class Public::OrdersController < ApplicationController
   def confirm
      @order = Order.new(order_params)
      @cart_items = CartItem.all
-    if @params[:order][:payment_method] == "credit"
+    if params[:order][:payment_method] == "credit"
      return @payment_method = "クレジット"
     else
       return @payment_method = "銀行振り込み"
     end
     
-     
+    if params[:order][:address] == "credit"
+      return @address = Customer.find(current_customer.id)
+    elsif params[:order][:address] == "credit"
+      return @address = Address.params[:id]
+    else params[:order][:address] == "credit"
+      return params[:order][:address]
+      
+    end
     
     render :orders_confirm
   end

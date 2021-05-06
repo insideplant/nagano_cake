@@ -15,8 +15,8 @@ Rails.application.routes.draw do
     get '/about' => 'homes#about'
     get '/customers/mypage' => 'customers#show'
     get '/customers/mypage/edit' => 'customers#edit'
+    get '/customers/acitve_confirm' => 'customers#active_confirm'
     patch '/customers/mypage/update' => 'customers#update'
-    get '/customers/acitve_confirm' => 'customers#acitve_confirm'
     patch '/customers/not_active' => 'customers#not_active'
     
     

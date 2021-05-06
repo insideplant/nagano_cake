@@ -1,20 +1,29 @@
 <div class="container">
   <h1>Product Index</h1>
   <div class="border-top border-dark" style="padding:5px;"></div><br>
-  <div>
-   <%= link_to " 商品投稿", new_admin_product_path, class:"btn btn-secondary btn-lg" %>
+  <%= link_to " 商品投稿", new_admin_product_path, class:"btn btn-secondary btn-md" %>
   </div>
-  
- <div class="row d-flex">
-  <% @items.each do |item| %>
-   <div class="col-sm-2 ">
-    <%= attachment_image_tag item, :image, :fill, 150,150, fallback: "no_image.jpg", size:'150x150' %>
-    <p>ジャンル： <%= item.genre_id %></p>
-    <p>商品名： <%= link_to item.name,admin_product_path(item) %></p>
-    <p>価格： <%= item.price %></p>
-    <p>説明： <%= item.introduction %></p>
-   </div>
-   <% end %>
- </div>
+  <table class="table table-striped">
+   <thead class="thead-dark">
+    <tr>
+     <th>商品id</th>
+     <th>商品名</th>
+     <th>税抜価格</th>
+     <th>ジャンル</th>
+     <th>Status</th>
+    </tr>
+   </thead>
+   <thody>
+    <% @items.each do |item| %>
+     <tr>
+      <td><%= item.id %></td>
+      <td><%= link_to item.name,admin_product_path(item) %></td>
+      <td><%= item.price %></td>
+      <td><%= item.genre_id.name %> %></td>
+      <td><%= item.is_active %></td>
+      <p>ジャンル：</p>
+    </tr>
+    <% end %>
+   </thody>
+  </table>
 </div>
-

@@ -13,11 +13,15 @@ class Public::CustomersController < ApplicationController
     customer.update(customer_params)
     redirect_to customers_mypage_path
   end
-
+  
   def active_confirm
   end
 
   def not_active
+    @customer = Customer.find(current_customer.id)
+    @customer.update(is_active: false)
+    reset_session
+    redirect_to root_path
   end
 
   private
