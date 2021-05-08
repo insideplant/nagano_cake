@@ -1,7 +1,7 @@
 class Admin::ProductsController < ApplicationController
   def index
     @items = Item.all
-    item.genre_id = genre.id
+    
   end
 
   def new
@@ -11,6 +11,7 @@ class Admin::ProductsController < ApplicationController
 
   def create
     @new_item = Item.new(item_params)
+    binding.pry
     @new_item.save
     redirect_to admin_products_path
   end
@@ -28,11 +29,11 @@ class Admin::ProductsController < ApplicationController
     item.update(item_params)
     redirect_to admin_products_path(item.id)
   end
-  
+
   private
-  
+
   def item_params
-    params.require(:item).permit(:genre, :name, :image, :price, :introduction)
+    params.require(:item).permit(:genre_id, :name, :image, :price, :introduction, :is_active)
   end
-  
+
 end

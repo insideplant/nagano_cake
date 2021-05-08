@@ -73,7 +73,10 @@
           </div>
           <div>
               <span>お届け先</span>
-              <%= @payment_method %>
+              <%= @order.name %>
+              <%= @order.postal_code %>
+              <%= @order.address %>
+              <%= @address %>
           </div>
           
       </div>

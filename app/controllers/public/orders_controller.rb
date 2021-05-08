@@ -10,16 +10,19 @@ class Public::OrdersController < ApplicationController
     if params[:order][:payment_method] == "credit"
      return @payment_method = "クレジット"
     else
-      return @payment_method = "銀行振り込み"
+     return @payment_method = "銀行振り込み"
     end
     
-    if params[:order][:address] == "credit"
-      return @address = Customer.find(current_customer.id)
-    elsif params[:order][:address] == "credit"
-      return @address = Address.params[:id]
-    else params[:order][:address] == "credit"
-      return params[:order][:address]
-      
+    if params[:order][:address_option] == "0"
+      @order.name
+      @order.postal_code
+      @order.address
+    elsif params[:order][:address_option] == "1"
+      @address = Address.params[:address_id]
+    elsif params[:order][:address_option] == "2"
+      @order.address = params[:order][:address]
+      @order.postal_code = params[:order][:postal_code]
+      @order.customer_name = params[:order][:customer_name]
     end
     
     render :orders_confirm
