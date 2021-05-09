@@ -2,7 +2,7 @@
   <h1>Cart Items</h1>
   <div class="border-top border-dark" style="padding:5px;"></div><br>
   <div class="text-right">
-    <%= link_to " カートを空にする", cart_items_path, class:"fas fa-shopping-cart btn btn-secondary btn-md" %>
+    <%= link_to ' カートを空にする', cart_items_destroy_all_path(@cart_items), method: :delete, class:"fas fa-shopping-cart btn btn-secondary btn-md" %>
   </div>
 
   <div class="row">
@@ -25,7 +25,7 @@
           <td>¥ <%= cart_item.item.price %></td>
           <td><%= cart_item.amount %></td>
           <td>¥ <%= cart_item.total_price %></td>
-          <td></td>
+          <td><%= link_to '削除する', cart_item_path(cart_item), method: :delete, class:"btn btn-secondary btn-md" %></td>
         </tr>
       </thody>
       <% sub_total = cart_item.total_price.to_i  %>
@@ -42,7 +42,7 @@
         </tr>
       </thody>
     </table>
-    
+
     <%= link_to "買い物を続ける", root_path, class:"btn btn-secondary btn-md"%>
   </div>
     <div class="text-center">

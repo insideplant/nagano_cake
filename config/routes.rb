@@ -18,14 +18,20 @@ Rails.application.routes.draw do
     get '/customers/acitve_confirm' => 'customers#active_confirm'
     patch '/customers/mypage/update' => 'customers#update'
     patch '/customers/not_active' => 'customers#not_active'
-    
-    
-    post '/orders/confirm' => 'orders#confirm'
-    get '/orders/complete' => 'orders#complete'
-    resources :orders, only:[:new, :confirm, :complete, :create, :index, :show]
-    resources :addresses, only:[:index, :edit, :create, :update, :destroy]
+
+    resources :orders do
+     collection do
+     post :confirm
+     get :complete
+     end
+    end
+   
+    resources :addresses, only:[:index, :edit, :update, :destroy]
     resources :items, only:[:show, :index]
-    resources :cart_items, only:[:index, :update, :destroy, :destroy_all, :create]
+    
+    resources :cart_items, only:[:index, :update, :destroy, :create]
+    delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
+    
   end
 
   namespace :admin do

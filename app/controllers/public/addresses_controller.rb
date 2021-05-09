@@ -19,7 +19,7 @@ class Public::AddressesController < ApplicationController
 
   def destroy
   end
-  
+
   private
 
   def address_params

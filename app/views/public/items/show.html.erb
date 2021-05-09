@@ -16,7 +16,7 @@
       <h4><span>¥<%= @item.price %></span></h4>
       <%= f.hidden_field :item_id, :value => @item.id %>
       <%= f.hidden_field :customer_id, :value => current_customer.id %>
-      <%= f.select :amount, options_for_select(2..10), include_blank: '1' %>
+      <%= f.select :amount, options_for_select(1..10) %>
       <%= f.submit "Cart in" %>
       <% end %>
     </div>

@@ -1,7 +1,6 @@
 class Admin::ProductsController < ApplicationController
   def index
-    @items = Item.all
-    
+    @items = Item.all.page(params[:page]).per(10)
   end
 
   def new
@@ -11,9 +10,11 @@ class Admin::ProductsController < ApplicationController
 
   def create
     @new_item = Item.new(item_params)
-    binding.pry
-    @new_item.save
-    redirect_to admin_products_path
+    if @new_item.save
+      redirect_to admin_products_path
+    else
+      render :new
+    end
   end
 
   def show

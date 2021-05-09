@@ -22,9 +22,9 @@
       <td><%= item.price %></td>
       <td><%= item.genre.genre_name %></td>
       <td><%= item.is_active %></td>
-      <p>ジャンル：</p>
     </tr>
     <% end %>　
+    <%= paginate @items %>
    </thody>
   </table>
 </div>

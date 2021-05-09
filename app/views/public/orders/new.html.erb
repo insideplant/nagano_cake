@@ -1,46 +1,46 @@
 <div class="container">
   <h1>Order Info</h1>
   <div class="border-top border-dark" style="padding:5px;"></div><br>
-  
-  
-　<%= form_with model:@order, url: orders_confirm_path, local:true do |f|  %>
+
+
+　<%= form_with model:@order, url: confirm_orders_path, local:true do |f|  %>
   <fieldset class="form-group">
       <legend class="row">支払い方法</legend>
       <div class="row">
         <div class="form-check">
-          <%= f.radio_button :payment_method, "credit" %> 
+          <%= f.radio_button :payment_method, "credit" %>
           <label class="form-check-label">クレジットカード</label>
         </div>
       </div>
-      
+
       <div class="row">
         <div class="form-check">
-          <%= f.radio_button :payment_method, "bank_transfar" %> 
+          <%= f.radio_button :payment_method, "bank_transfar" %>
           <label class="form-check-label">銀行振り込み</label>
         </div>
       </div>
   </fieldset>
-  
+
   <fieldset class="form-group">
       <legend class="row">お届け先</legend>
       <div class="row">
         <div class="form-check">
-          <%= f.radio_button :address_option, "self_address" %> 
+          <%= f.radio_button :address_option, 0 %>
           <label class="form-check-label">ご自身の住所</label>
         </div>
-        <%= current_customer.postal_code%><%= current_customer.address%>
-        <%= current_customer.last_name %><%= current_customer.first_name%>
+        <%= current_customer.postal_code %><%= current_customer.address %>
+        <%= current_customer.last_name %><%= current_customer.first_name %>
       </div>
       <div class="row">
         <div class="form-check">
-          <%= f.radio_button :address_option, "select_address" %> 
+          <%= f.radio_button :address_option, 1 %>
           <label class="form-check-label">登録済住所から選択</label>
           <%= f.collection_select :address_id, @addresses, :id, :address, include_blank: "選択して下さい", class:"form-control"  %>
         </div>
       </div>
       <div class="row">
         <div class="form-check">
-          <%= f.radio_button :address_option, "write_address" %> 
+          <%= f.radio_button :address_option, 2 %>
           <label class="form-check-label">新しいお届け先</label>
           <div class="field">
             <label class="row inline-text">郵便番号(ハイフンなし)</label>%>
