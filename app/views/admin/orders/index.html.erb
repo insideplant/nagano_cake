@@ -11,15 +11,15 @@
     </tr>
    </thead>
    <thody>
-    <% @customers.each do |customer| %>
+    <% @orders.each do |order| %>
      <tr>
-      <td><%= customer.id %></td>
-      <td><%= link_to customer.user_name, admin_order_detail_path(customer.id) %></td>
-      <td><%= customer.last_name %><%= customer.first_name %></td>
-      <td><%= order.amount %></td>
-      <td><%= order.is_active %></td>
+      <td><%= link_to order.created_at,edit_admin_order_path(order) %></td>
+      <td><%= order.customer_name %></td>
+      <td><%= order.status %></td>
+      <td><%= order.status %></td>
      </tr>
     <% end %>
    </thody>
   </table>
 </div>
+
