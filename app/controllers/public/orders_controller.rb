@@ -37,8 +37,11 @@ class Public::OrdersController < ApplicationController
 
   def create
    @order = Order.new(order_params)
+   @order_detail = Order_detail.new(order_detail_params)
+   
    if @order.save
-     
+      @delete_item = CartItem.where(params[:order][:customer_id])
+      @delete_item.destroy_all
       redirect_to complete_orders_path
    else
       render :confirm
@@ -50,12 +53,17 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.find(params[:id])
   end
 
   private
 
   def order_params
-    arams.require(:order).permit(:postal_code,:address,:customer_name,:customer_id,:shipping_fee,:payment_amount,:payment_method,:status)
+    params.require(:order).permit(:postal_code,:address,:customer_name,:customer_id,:shipping_fee,:payment_amount,:payment_method,:status)
+  end
+  
+  def order_detail_params
+    params.require(:order).permit(:order_id,:item_id,:price,:amount,:making_status)
   end
 
 end
