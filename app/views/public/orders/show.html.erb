@@ -3,7 +3,8 @@
   <div class="border-top border-dark" style="padding:5px;"></div><br>
 
   <div class="row">
-    <table class="table table-striped col-7">
+    <div class="col-6">
+    <table class="table table-striped">
       <thody>
         <tr>
             <td>
@@ -31,19 +32,22 @@
             </td>
         </tr>
         <tr>
-            ステータス
-        </tr>
-        <tr>
+            <td>ステータス</td>
+            <td></td>
         </tr>
       </thody>
     </table>
-    <table class="table table-striped col-5">
+    </div>
+
+    <div class="col-5">
+    <table class="table table-striped">
       <thody>
         <tr>
           <td>
           　商品合計
           </td>
           <td>
+            @order_detail.amount
           </td>
         </tr>
         <tr>
@@ -58,13 +62,17 @@
             ご請求額
           </td>
           <td>
+
           </td>
         </tr>
         </thody>
     </table>
+    </div>
   </div>
-  <div class="row">
-    <table  class="table table-striped col-5">
+
+  <div class="row col-6">
+    <div>
+    <table  class="table table-striped">
     <thody>
         <tr>
           <td>
@@ -80,19 +88,23 @@
             小計
           </td>
         </tr>
+        <% @order_details.each do |order_detail|%>
         <tr>
           <td>
-            <%= @order_details.item_id.name %>
+            <%= order_detail.item.name %>
           </td>
           <td>
-            <%= @order_details.item_id.name %>
+            <%= order_detail.price %>
           </td>
           <td>
+            <%= order_detail.amount %>
           </td>
           <td>
           </td>
         </tr>
+        <% end %>
     </thody>
     </table>
+    </div>
   </div>
 </div>

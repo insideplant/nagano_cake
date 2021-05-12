@@ -12,7 +12,7 @@ module NaganoCake
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
       # 標準 日本語化
-    config.i18n.default_locale = :ja
+    # config.i18n.default_locale = :ja
   end
 end
 

@@ -4,7 +4,9 @@ class Public::CartItemsController < ApplicationController
   end
 
   def update
-    cart_item
+    cart_item = CartItem.find(params[:id])
+    cart_item.update(amount: params[:cart_item][:amount])
+    render :index
   end
 
   def destroy

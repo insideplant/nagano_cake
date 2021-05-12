@@ -1,9 +1,16 @@
 <div class="container">
   <h1>Product Index</h1>
+
+  <div class="text-right">
+  <%= form_tag(admin_search_path,:method => 'get') do %>
+   <%= text_field_tag :search %>
+   <%= submit_tag 'Search', :name => nil %>
+  <% end %>
+  </div>
   <div class="border-top border-dark" style="padding:5px;"></div><br>
   <div><%= link_to " 商品投稿", new_admin_product_path, class:"btn btn-secondary btn-md" %>
   </div>
-  
+
   <table class="table table-striped">
    <thead class="thead-dark">
     <tr>
@@ -23,8 +30,7 @@
       <td><%= item.genre.genre_name %></td>
       <td><%= item.is_active %></td>
     </tr>
-    <% end %>　
-    <%= paginate @items %>
+    <% end %>
    </thody>
   </table>
 </div>

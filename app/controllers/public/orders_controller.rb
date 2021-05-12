@@ -40,7 +40,7 @@ class Public::OrdersController < ApplicationController
    if order.save
       cart_items = CartItem.where(params[:order][:customer_id])
       cart_items.each do |cart_item|
-        order_detail = OrderDetail.new(customer_id: current_customer.id, order_id: order.id,price: cart_item.item.price, amount: cart_item.amount)
+        order_detail = OrderDetail.new(customer_id: current_customer.id, order_id: order.id,item_id: cart_item.item.id,price: cart_item.item.price, amount: cart_item.amount)
         order_detail.save
       end
       @delete_item = CartItem.where(params[:order][:customer_id])
@@ -57,6 +57,7 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @order_details = OrderDetail.where(order_id: @order.id)
   end
 
   private

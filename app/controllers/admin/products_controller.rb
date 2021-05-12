@@ -1,6 +1,15 @@
 class Admin::ProductsController < ApplicationController
+
+  def search
+    @items = Item.search(params[:search])
+    puts "================"
+     puts params[:page]
+     puts "================"
+    render :index
+  end
+
   def index
-    @items = Item.all.page(params[:page]).per(10)
+    @items = Item.all
   end
 
   def new

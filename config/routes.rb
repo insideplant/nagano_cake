@@ -25,13 +25,13 @@ Rails.application.routes.draw do
      get :complete
      end
     end
-   
+
     resources :addresses, only:[:index, :edit, :update, :destroy]
     resources :items, only:[:show, :index]
     delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :cart_items, only:[:index, :update, :destroy, :create]
-    
-    
+
+
   end
 
   namespace :admin do
@@ -40,6 +40,8 @@ Rails.application.routes.draw do
     resources :customers, only:[:index, :show, :edit, :update]
     resources :orders, only:[:index, :edit, :update]
     resources :genres, only:[:index, :create, :edit, :update]
+
+    get '/products/search', to: 'products#search', as: 'search'
     resources :products, only:[:index, :new, :create, :show, :edit, :update]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

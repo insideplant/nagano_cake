@@ -25,7 +25,8 @@
           <td>¥ <%= order.customer_name %></td>
           <td><%= order.payment_amount %></td>
           <td><%= order.status %></td>
-          <td><%= link_to "表示する",order_path(order.id), class:"btn btn-secondary btn-md" %></td>
+          <td><%= link_to "表示する",order_path(order), class:"btn btn-secondary btn-md" %></td>
+          <% puts "order.id" %>
         </tr>
       </thody>
       <% end %>
