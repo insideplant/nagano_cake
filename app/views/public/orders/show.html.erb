@@ -4,27 +4,27 @@
 
   <div class="row">
     <div class="col-6">
-    <table class="table table-striped">
+    <table class="table table-bordered">
       <thody>
         <tr>
-            <td>
-            　注文日
+            <td class="bg-dark text-light">
+            注文日
             </td>
             <td>
-              <%= @order.created_at %>
+            <%= @order.created_at.strftime('%Y/%m/%d') %>
             </td>
           </tr>
         <tr>
-          <td>
-            配送先
-          </td>
-          <td>
-            <%= @order.postal_code %>
-            <%= @order.address %>
-          </td>
+            <td class="bg-dark text-light">
+              配送先
+            </td>
+            <td>
+              <%= @order.postal_code %>
+              <%= @order.address %>
+            </td>
         </tr>
         <tr>
-            <td>
+            <td class="bg-dark text-light">
               支払い方法
             </td>
             <td>
@@ -32,8 +32,12 @@
             </td>
         </tr>
         <tr>
-            <td>ステータス</td>
-            <td></td>
+            <td class="bg-dark text-light">
+              ステータス
+            </td>
+            <td>
+              <%= @order.status %>
+            </td>
         </tr>
       </thody>
     </table>
@@ -43,22 +47,22 @@
     <table class="table table-striped">
       <thody>
         <tr>
-          <td>
+          <td class="bg-dark text-light">
           　商品合計
           </td>
           <td>
-            @order_detail.amount
+            <%= @sum2 %>
           </td>
         </tr>
         <tr>
-          <td>
+          <td class="bg-dark text-light">
             配送料
           </td>
           <td>
           </td>
         </tr>
         <tr>
-          <td>
+          <td class="bg-dark text-light">
             ご請求額
           </td>
           <td>
@@ -70,25 +74,30 @@
     </div>
   </div>
 
-  <div class="row col-6">
-    <div>
+  <div class="row">
+    <div class="col-6">
     <table  class="table table-striped">
-    <thody>
+    <thead class="thead-dark">
         <tr>
-          <td>
+          <th>
           　商品
-          </td>
-          <td>
+          </th>
+          <th>
             単価（税込）
-          </td>
-          <td>
+          </th>
+          <th>
             個数
-          </td>
-          <td>
+          </th>
+          <th>
             小計
-          </td>
+          </th>
         </tr>
+    </thead>
+
+    <thody>
+        <% sum = 0 %>
         <% @order_details.each do |order_detail|%>
+        
         <tr>
           <td>
             <%= order_detail.item.name %>
@@ -100,9 +109,13 @@
             <%= order_detail.amount %>
           </td>
           <td>
+            <%= order_detail.total_price.to_i %>
           </td>
         </tr>
+         <% sub_total = order_detail.total_price.to_i  %>
+         <% sum+=sub_total %>
         <% end %>
+         <% @sum2 = sum %>
     </thody>
     </table>
     </div>

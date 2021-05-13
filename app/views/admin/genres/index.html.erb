@@ -3,12 +3,12 @@
   <div class="border-top border-dark" style="padding:5px;"></div><br>
   <div>
    <%= form_with model:@new_genre, url:admin_genres_path, local:true do |f| %>
-   <label class="form-control-label">Genre Name</label>
+   <label class="form-control-label">ジャンル名</label>
    <%= f.text_field :genre_name %>
-   <%= f.submit 'New', class:"btn btn-secondary btn-sm" %>
+   <%= f.submit '新規登録', class:"btn btn-secondary btn-sm" %>
    <% end %>
   </div>
-  
+
   <table class="table table-striped">
    <thead class="thead-dark">
     <tr>
@@ -20,7 +20,7 @@
     <% @genres.each do |genre| %>
      <tr>
       <td><%= genre.genre_name %></td>
-      <td> <%= link_to "Edit", edit_admin_genre_path(genre), class:"btn btn-secondary btn-sm" %></td>
+      <td> <%= link_to "編集する", edit_admin_genre_path(genre), class:"btn btn-secondary btn-sm" %></td>
      </tr>
     <% end %>
    </thody>

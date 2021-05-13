@@ -1,9 +1,9 @@
 <div class="container">
-  <h1>Edit Genre</h1>
+  <h1>ジャンル編集</h1>
   <div class="border-top border-dark" style="padding:5px;"></div><br>
   <div>
    <%= form_with model:@genre, url:admin_genre_path, local:true do |f| %>
-   <label class="form-control-label">Genre Name</label>
+   <label class="form-control-label">ジャンル名</label>
    <%= f.text_field :genre_name %>
    <%= f.submit 'Update', class:"btn btn-secondary btn-sm" %>
    <% end %>

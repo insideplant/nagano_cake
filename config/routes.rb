@@ -30,17 +30,14 @@ Rails.application.routes.draw do
     resources :items, only:[:show, :index]
     delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :cart_items, only:[:index, :update, :destroy, :create]
-
-
   end
 
   namespace :admin do
     root to: 'homes#top'
-    get 'order_details/update'
+    patch 'order_details/update'
     resources :customers, only:[:index, :show, :edit, :update]
-    resources :orders, only:[:index, :edit, :update]
+    resources :orders, only:[:show, :update]
     resources :genres, only:[:index, :create, :edit, :update]
-
     get '/products/search', to: 'products#search', as: 'search'
     resources :products, only:[:index, :new, :create, :show, :edit, :update]
   end

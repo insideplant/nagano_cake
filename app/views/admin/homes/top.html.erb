@@ -1,16 +1,31 @@
 <div class="container">
-    <h1>管理者画面</h1>
-    <div class="row">
-        <div class="col">
-            <p><%= link_to "商品一覧",admin_products_path %></p>
-            <p><%= link_to "ジャンル一覧",admin_genres_path %></p>
-            <p><%= link_to "顧客一覧",admin_customers_path %></p>
-            <p>注文詳細画面</p>            
-        </div>
-        <div class="col">
-            <p>注文ステータス・着手状況</p>
-            <p>製作ステータスの更新</p>
-        </div>
-        
-    </div>
+  <h1>Order index</h1>
+  <div class="border-top border-dark" style="padding:5px;"></div><br>
+  <table class="table table-striped">
+   <thead class="thead-dark">
+    <tr>
+     <th>購入日時</th>
+     <th>購入者</th>
+     <th>注文個数</th>
+     <th>注文ステータス</th>
+    </tr>
+   </thead>
+   <thody>
+    <% @orders.each do |order| %>
+     <tr>
+      <td><%=link_to order.created_at.strftime('%Y/%m/%d'), admin_order_path(order) %></td>
+      <td>
+       <%= order.customer_name %>
+       </td>
+      <td>
+       <% order_amount=0 %>
+       <% order.order_details.each do |order_detail| %>
+       <% order_amount+=order_detail.amount %>
+       <% end %>
+       <%= order_amount %></td>
+      <td><%= order.status %></td>
+     </tr>
+    <% end %>
+   </thody>
+  </table>
 </div>

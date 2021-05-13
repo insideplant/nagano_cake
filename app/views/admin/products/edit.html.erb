@@ -1,5 +1,5 @@
  <div class="container">
-  <h1>Edit Item</h1>
+  <h1>商品編集</h1>
   <div class="border-top border-dark" style="padding:5px;"></div><br>
 
   <%= form_with model:@item, url:admin_products_path, local:true do |f| %>
@@ -20,18 +20,18 @@
 
    <div class="form-group">
    <label>ジャンル</label>
-   <%= f.collection_select :genre_id, @item.genre.genre_name, :id, :genre_name, include_blank: "選択して下さい", class:"form-control"  %>
+   <%= f.collection_select :genre_id, Genre.all, :id, :genre_name, include_blank: "選択して下さい", class:"form-control" %>
    </div>
 
    <div class="form-group">
-   <label>税抜価格</label>
-   <%= f.text_field :price, class:"form-control"  %>円
+   <label>税抜価格(円)</label>
+   <%= f.text_field :price, class:"form-control" %>
    </div>
 
    <div class="form-group">
-   <label>販売ステータス</label>
-   <%= f.radio_button :is_active, :販売中 %>
-   <%= f.radio_button :is_active, :販売停止中 %>
+   <label>販売ステータス</label></br>
+   販売中 <%= f.radio_button :is_active, :true %>
+   販売停止中 <%= f.radio_button :is_active, :false %>
    </div>
 
    <%= f.submit 'Update', class:"btn btn-secondary btn-sm" %>

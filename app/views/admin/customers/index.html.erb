@@ -1,16 +1,15 @@
 
 <div class="container">
-  <h1>User index</h1>
-  
+  <h1>会員一覧</h1>
+
   <div class="border-top border-dark" style="padding:5px;"></div><br>
   <table class="table table-striped">
    <thead class="thead-dark">
     <tr>
-     <th>id</th>
-     <th>User Name</th>
-     <th>Name</th>
-     <th>Email</th>
-     <th>Status</th>
+     <th>会員ID</th>
+     <th>氏名</th>
+     <th>メールアドレス</th>
+     <th>ステータス</th>
     </tr>
    </thead>
    <thody>
@@ -18,7 +17,6 @@
      <tr>
       <td><%= customer.id %></td>
       <td><%= link_to customer.user_name, admin_customer_path(customer.id) %></td>
-      <td><%= customer.last_name %><%= customer.first_name %></td>
       <td><%= customer.email %></td>
       <td><%= customer.is_active %></td>
      </tr>

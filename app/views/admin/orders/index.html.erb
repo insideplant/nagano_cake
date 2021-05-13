@@ -1,25 +1,2 @@
-<div class="container">
-  <h1>Order index</h1>
-  <div class="border-top border-dark" style="padding:5px;"></div><br>
-  <table class="table table-striped">
-   <thead class="thead-dark">
-    <tr>
-     <th>Buying Date</th>
-     <th>Name</th>
-     <th>Amount</th>
-     <th>Status</th>
-    </tr>
-   </thead>
-   <thody>
-    <% @orders.each do |order| %>
-     <tr>
-      <td><%= link_to order.created_at,edit_admin_order_path(order) %></td>
-      <td><%= order.customer_name %></td>
-      <td><%= order.status %></td>
-      <td><%= order.status %></td>
-     </tr>
-    <% end %>
-   </thody>
-  </table>
-</div>
+
 

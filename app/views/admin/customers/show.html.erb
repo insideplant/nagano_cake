@@ -1,48 +1,45 @@
  <div class="container">
-    <h1>User info</h1>
+    <h1><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報</h1>
     <div class="border-top border-dark" style="padding:5px;"></div><br>
-    <div class="text-right">
-    <%= link_to " Edit", edit_admin_customer_path(@customer.id), class:"btn btn-secondary btn-lg" %>
-    </div>
   <div>
   <table class="table table-striped">
    <thody>
      <tr>
-      <td>ID</td>
+      <td>会員ID</td>
       <td><%= @customer.id%></td>
      </tr>
      <tr>
-      <td>Name</td>
+      <td>氏名</td>
       <td><%= @customer.last_name%><%= @customer.first_name%></td>
      </tr>
      <tr>
-      <td>Name_kana</td>
+      <td>フリガナ</td>
       <td><%= @customer.last_name_kana%><%= @customer.first_name_kana%></td>
      </tr>
      <tr>
-      <td>Postal Code</td>
+      <td>郵便番号</td>
       <td><%= @customer.postal_code%></td>
      </tr>
      <tr>
-      <td>Address</td>
+      <td>住所</td>
       <td><%= @customer.address%></td>
      </tr>
      <tr>
-      <td>Phone Number</td>
+      <td>電話番号</td>
       <td><%= @customer.telephone_number%></td>
      </tr>
      <tr>
      <tr>
-      <td>Email</td>
+      <td>メールアドレス</td>
       <td><%= @customer.email%></td>
      </tr>
      <tr>
-      <td>Status</td>
+      <td>会員ステータス</td>
       <td><%= @customer.is_active%></td>
      </tr>
     </thody>
    </table>
-   <%= link_to "Edit", edit_admin_customer_path(@customer), class:"btn btn-secondary btn-sm" %>
-   <%= link_to "Customers", admin_orders_path, class:"btn btn-secondary btn-sm" %>
+   <%= link_to "編集する", edit_admin_customer_path(@customer), class:"btn btn-secondary btn-sm" %>
+   <%= link_to "注文履歴一覧を見る", admin_root_path(id: @customer.id), class:"btn btn-secondary btn-sm" %>
   </div>
  </div>
