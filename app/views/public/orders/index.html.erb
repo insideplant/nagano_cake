@@ -6,12 +6,12 @@
     <table class="table table-striped">
       <thead>
         <tr>
-          <th>注文日</th>
-          <th>配送先</th>
-          <th>注文商品</th>
-          <th>支払金額</th>
-          <th>ステータス</th>
-          <th>注文詳細</th>
+          <th>Order Date</th>
+          <th>Address</th>
+          <th>Item</th>
+          <th>Amount</th>
+          <th>Status</th>
+          <th>Detail</th>
         </tr>
       </thead>
       <% @orders.each do |order| %>
@@ -22,7 +22,10 @@
           <%= order.address %></br>
           <%= order.customer_name %>
           </td>
-          <td>¥ <%=  %></td>
+          <td> <% order.order_details.each do|order_detail|%>
+            <%#= order_detail.item.item %>
+            <% end %>
+          </td>
           <td><%= order.payment_amount %></td>
           <td><%= order.status %></td>
           <td><%= link_to "表示する",order_path(order), class:"btn btn-secondary btn-md" %></td>

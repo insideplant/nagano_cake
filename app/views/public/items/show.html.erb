@@ -11,13 +11,15 @@
     </div>
     <div class="col-sm-4 text-center">
       <%= form_with model:@cart_item, url:cart_items_path, local:true do |f| %>
-      <p>説明<%= @item.introduction %></p>
-      <p>ジャンル<%= @item.genre_id %></p>
+      <p><%= @item.introduction %></p>
+      <p>ジャンル : <%= @item.genre.genre_name %></p>
       <h4><span>¥<%= @item.price %></span></h4>
       <%= f.hidden_field :item_id, :value => @item.id %>
+      <% if customer_signed_in? %>
       <%= f.hidden_field :customer_id, :value => current_customer.id %>
       <%= f.select :amount, options_for_select(1..10) %>
       <%= f.submit "Cart in" %>
+      <% end %>
       <% end %>
     </div>
   </div>

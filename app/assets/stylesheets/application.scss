@@ -18,11 +18,15 @@
  @import 'font-awesome';
 
 body {
-  background-color: white;
+  background-color:rgba(255,255,255,0.7);
+  background-image: image-url("oblique-yellow.png");
+  background-blend-mode:lighten;
+}
+
+table {
+    background-color:rgba(255,255,255,1);
 }
 
 header {
     margin-bottom: 35px;
 }
-
-

@@ -2,7 +2,7 @@
   <h1>商品編集</h1>
   <div class="border-top border-dark" style="padding:5px;"></div><br>
 
-  <%= form_with model:@item, url:admin_products_path, local:true do |f| %>
+  <%= form_with model:@item, url:admin_product_path(@item.id), local:true do |f| %>
    <div class="form-group">
    <label>商品画像</label>
    <%= f.attachment_field :image%>
@@ -34,7 +34,7 @@
    販売停止中 <%= f.radio_button :is_active, :false %>
    </div>
 
-   <%= f.submit 'Update', class:"btn btn-secondary btn-sm" %>
+   <%= f.submit '更新', class:"btn btn-secondary btn-md" %>
 
    <% end %>
  </div>

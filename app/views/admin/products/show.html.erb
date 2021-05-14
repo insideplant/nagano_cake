@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Product detail</h1>
+  <h1>商品詳細</h1>
   <div class="border-top border-dark" style="padding:5px;"></div><br>
 
   <div class="row text-center">
@@ -19,11 +19,15 @@
         </tr>
         <tr>
          <td>ジャンル</td>
-         <td><%= @item.genre_id %></td>
+         <td><%= @item.genre.genre_name %></td>
         </tr>
         <tr>
          <td>税込価格</br>(税抜き価格)</td>
-         <td><%= @item.price %></td>
+         <td>
+          ¥ <% add_tax_price = @item.price*1.1 %>
+          <%= add_tax_price.floor %>
+          (¥ <%= @item.price %>)
+         </td>
         </tr>
         <tr>
          <td>販売ステータス</td>

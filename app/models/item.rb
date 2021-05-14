@@ -12,8 +12,8 @@ class Item < ApplicationRecord
   validates :introduction
   validates :is_active
   end
-  
-  
+
+
 
   def self.search(search)
     return Item.all unless search

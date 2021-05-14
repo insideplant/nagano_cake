@@ -31,10 +31,10 @@
 
    <div class="form-group">
    <label>販売ステータス</label></br>
-   販売中 <%= f.radio_button :is_active, :true %>
+   販売中 <%= f.radio_button :is_active, :true, checked: true %>
    販売停止中 <%= f.radio_button :is_active, :false %>
    </div>
 
-   <%= f.submit 'Create', class:"btn btn-secondary btn-sm" %>
+   <%= f.submit '新規登録', class:"btn btn-secondary btn-md" %>
    <% end %>
  </div>

@@ -1,62 +1,97 @@
 <div class="container">
   <h1>Order Info</h1>
-  <div class="border-top border-dark" style="padding:5px;"></div><br>
-
-
+  <div class="border-top border-dark"></div><br>
 　<%= form_with model:@order, url: confirm_orders_path, local:true do |f|  %>
-  <fieldset class="form-group">
-      <legend class="row">支払い方法</legend>
-      <div class="row">
+    <div class="row">
+    <h4>支払い方法</h4>
+    </div>
+    <div class="row mt-0 pt-0">
         <div class="form-check">
-          <%= f.radio_button :payment_method, "credit" %>
+          <%= f.radio_button :payment_method, "credit", checked: true %>
           <label class="form-check-label">クレジットカード</label>
         </div>
-      </div>
-
-      <div class="row">
+    </div>
+    <div class="row">
         <div class="form-check">
           <%= f.radio_button :payment_method, "bank_transfar" %>
           <label class="form-check-label">銀行振り込み</label>
         </div>
-      </div>
-  </fieldset>
+    </div>
 
-  <fieldset class="form-group">
-      <legend class="row">お届け先</legend>
-      <div class="row">
+    <div class="row mt-4">
+    <h4>お届け先</h4>
+    </div>
+    <div class="row mt-0  pt-0">
         <div class="form-check">
-          <%= f.radio_button :address_option, 0 %>
-          <label class="form-check-label">ご自身の住所</label>
+        <%= f.radio_button :address_option, 0 ,checked: true %>
+        <label class="form-check-label">ご自身の住所</label>
         </div>
-        <%= current_customer.postal_code %><%= current_customer.address %>
-        <%= current_customer.last_name %><%= current_customer.first_name %>
+    </div>
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-6">
+        <%= current_customer.postal_code %><%= current_customer.address %><%= current_customer.last_name %><%= current_customer.first_name %>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-check">
+        <%= f.radio_button :address_option, 1 %>
+        <label class="form-check-label">登録済住所から選択</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-6">
+        <%= f.collection_select :address_id, @addresses, :id, :address, include_blank: "選択して下さい", class:"form-control-lg"  %>
+        </div>
+    </div>
+    </div>
+
+    <div class="form-group">
+    <div class="row">
+        <div class="form-check ">
+        <%= f.radio_button :address_option, 2 %>
+        <label class="form-check-label">新しいお届け先</label>
+        </div>
+    </div>
+
+    <div class="row g-3 align-items-center">
+      <div class="col-1"></div>
+      <div class="col-3">
+      <label class="col-form-label" >郵便番号(ハイフンなし)</label>
       </div>
-      <div class="row">
-        <div class="form-check">
-          <%= f.radio_button :address_option, 1 %>
-          <label class="form-check-label">登録済住所から選択</label>
-          <%= f.collection_select :address_id, @addresses, :id, :address, include_blank: "選択して下さい", class:"form-control"  %>
-        </div>
+      <div class="col-auto">
+        <%= f.text_field :postal_code, class:"form-control" %>
       </div>
-      <div class="row">
-        <div class="form-check">
-          <%= f.radio_button :address_option, 2 %>
-          <label class="form-check-label">新しいお届け先</label>
-          <div class="field">
-            <label class="row inline-text">郵便番号(ハイフンなし)</label>%>
-            <%= f.text_field :postal_code %>
-            <label class="row">住所</label>
-            <%= f.text_field :address %>
-            <label class="row">宛名</label>
-            <%= f.text_field :customer_name %>
-          </div>
-        </div>
+    </div>
+
+    <div class="row g-3 align-items-center">
+      <div class="col-1"></div>
+      <div class="col-3">
+      <label class="col-form-label" >住所 </label>
+      </div>
+      <div class="col-7">
+        <%= f.text_field :address, class:"form-control" %>
+      </div>
+    </div>
+
+    <div class="row g-3 align-items-center">
+      <div class="col-1"></div>
+      <div class="col-3">
+      <label class="col-form-label" >宛名</label>
+      </div>
+      <div class="col-auto">
+        <%= f.text_field :customer_name, class:"form-control" %>
+      </div>
+    </div>
+    </div>
         <div class="form-group">
           <div class="text-right">
           <%= f.submit :"Save Changes", class: "btn btn-secondary" %>
         </div>
     </div>
-      </div>
   </fieldset>
   <% end %>
 </div>
