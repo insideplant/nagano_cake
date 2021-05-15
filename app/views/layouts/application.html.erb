@@ -14,7 +14,9 @@
           <%= link_to root_path, class: "fas fa-birthday-cake navbar-brand nav-link text_light" do %><span> 永野CAKE</span>
           <% end %>
 
-
+          <% if customer_signed_in? %>
+            <div class="text-light">Welcome to <%= current_customer.user_name %> </div>
+          <% end %>
           <div>
             <ul class="navbar-nav ml-auto">
               <% if customer_signed_in? %>

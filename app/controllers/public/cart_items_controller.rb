@@ -6,6 +6,7 @@ class Public::CartItemsController < ApplicationController
   def update
     cart_item = CartItem.find(params[:id])
     cart_item.update(amount: params[:cart_item][:amount])
+    @cart_items = CartItem.where(customer_id: current_customer)
     render :index
   end
 
@@ -30,7 +31,7 @@ class Public::CartItemsController < ApplicationController
      cart_item = CartItem.new(cart_item_params)
      cart_item.save
     end
-    redirect_to items_path
+    redirect_to cart_items_path
   end
 
   private

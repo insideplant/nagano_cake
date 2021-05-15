@@ -11,7 +11,7 @@
             購入者
             </td>
             <td>
-            <%= @order.customer_name %>
+            <%= @order.customer.last_name %><%= @order.customer.first_name %>
             </td>
         </tr>
         <tr>
@@ -27,7 +27,7 @@
               配送先
             </td>
             <td>
-              <%= @order.postal_code %>
+              〒<%= @order.postal_code %>
               <%= @order.address %>
             </td>
         </tr>
@@ -36,7 +36,7 @@
               支払い方法
             </td>
             <td>
-              <%= @order.payment_method %>
+            <%= @order.payment_method %>
             </td>
         </tr>
         <tr>
@@ -85,18 +85,18 @@
             <%= order_detail.item.name %>
           </td>
           <td>
-            <%= add_tax_price = (order_detail.price*1.1).floor %>
+            ¥ <%= add_tax_price = (order_detail.price*1.1).floor %>
           </td>
           <td>
             <%= amount = order_detail.amount %>
           </td>
           <td>
-            <%= amount_money = add_tax_price*amount %>
+            ¥ <%= amount_money = add_tax_price*amount %>
           </td>
           <td>
             <div class="form-group">
              <%= form_with model:order_detail, url: admin_order_details_update_path(order_detail), class:"form-horizontal", local:true do |f|%>
-              <%= f.select :is_active, [['制作不可','cant_be_produced'], ['制作待ち', 'wating_produce'],['製作中', 'producing'],['制作完了', 'produced']], class:"form-control" %>
+              <%= f.select :is_active, [['製作不可','cant_be_produced'], ['製作待ち', 'wating_produce'],['製作中', 'producing'],['製作完了', 'produced']], class:"form-control" %>
               <%= f.hidden_field :id, :value => order_detail.id %>
               <%= f.hidden_field :order_id, :value => order_detail.order.id %>
              <%= f.submit '更新', class:"btn btn-secondary btn-sm" %>
@@ -120,7 +120,7 @@
             商品合計
           </td>
           <td>
-            <%= @sum2 %>
+            ¥ <%= @sum %>
           </td>
         </tr>
         <tr>
@@ -128,7 +128,7 @@
             送料
           </td>
           <td>
-            <%= 800 %>
+            ¥ <%= 800 %>
           </td>
         </tr>
         <tr>
@@ -136,7 +136,7 @@
             請求金額合計
           </td>
           <td>
-            <%= @sum2+800 %>
+            ¥ <%= @sum + 800 %>
           </td>
         </tr>
         </thody>

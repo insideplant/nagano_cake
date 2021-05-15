@@ -2,14 +2,23 @@
     <div class="jumbotron">
         <h1><span>ひとくちだけ、</span></br>
         <span>試してみたい、色がある。</span></h1>
-        <%= link_to "Sign Up", new_customer_registration_path,
-        class: "btn btn-secondary btn-lg" %>
-        <div class="row">
-        <p>ようこそ、ながのCAKEへ！</br>
-        このサイトは、ケーキ販売のECサイトになります。</br>
-        会員でない⽅も商品の閲覧はできますが、</br>
-        購⼊には会員登録が必要になります。</p>
-        </div>
+        <% if customer_signed_in? %>
+         <%= link_to "Products", items_path,class: "btn btn-secondary btn-lg" %>
+         <div class="row md-6">
+            <h4><span>　ようこそ、ながのCAKEへ！!</span></h4>
+         </div>
+        <% else %>
+         <%= link_to "Sign Up", new_customer_registration_path,class: "btn btn-secondary btn-lg" %>
+         <div class="row">
+             <div><h5><span>　　ようこそ、ながのCAKEへ！</span></h5></div>
+         </div>
+         <div>
+              <p>このサイトは、ケーキ販売のECサイトになります。</br>
+            会員でない⽅も商品の閲覧はできますが、</br>
+            購⼊には会員登録が必要になります。</p>
+         </div>
+
+        <% end %>
     </div>
 
         <h2>New Products</h2>

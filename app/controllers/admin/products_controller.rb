@@ -20,7 +20,7 @@ class Admin::ProductsController < ApplicationController
   def create
     @new_item = Item.new(item_params)
     if @new_item.save
-      redirect_to admin_products_path
+      redirect_to admin_product_path(@new_item)
     else
       render :new
     end

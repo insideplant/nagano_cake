@@ -1,6 +1,6 @@
 class Public::OrdersController < ApplicationController
   def new
-    @addresses = Address.all
+    @addresses = Address.where(customer_id: current_customer.id)
     @order = Order.new
   end
 
@@ -10,7 +10,6 @@ class Public::OrdersController < ApplicationController
     if params[:order][:payment_method] == "credit"
      @payment_method_a = "クレジット"
      @payment_method_b = "credit"
-
     else
      @payment_method_a = "銀行振り込み"
      @payment_method_b = "bank_transfar"
@@ -63,6 +62,7 @@ class Public::OrdersController < ApplicationController
      sub_total = order_detail.total_price.to_i
      @sum+=sub_total
     end
+
   end
 
   private

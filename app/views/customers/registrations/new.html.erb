@@ -2,55 +2,55 @@
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-sm-0">
     <h2>Sign up</h2>
-    
+
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "customers/shared/error_messages", resource: resource %>
-      
+
       <div class="field">
         <%= f.label :UserName %><br />
         <%= f.text_field :user_name, autofocus: true, autocomplete: "user-name"  %>
       </div>
-      
+
       <div class="field">
         <%= f.label :LastName %><br />
         <%= f.text_field :last_name, autofocus: true, autocomplete: "last-name"  %>
-      </div> 
-      
+      </div>
+
       <div class="field">
         <%= f.label :FirstName %><br />
         <%= f.text_field :first_name, autofocus: true, autocomplete: "first-name"  %>
       </div>
-      
+
       <div class="field">
         <%= f.label :LastName_kana %><br />
         <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last-name"  %>
-      </div> 
-      
+      </div>
+
       <div class="field">
         <%= f.label :FirstName_kana %><br />
         <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "last-name"  %>
-      </div> 
-      
+      </div>
+
       <div class="field">
         <%= f.label :email %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
       </div>
-      
+
       <div class="field">
         <%= f.label :postal_code %><br />
         <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
       </div>
-      
+
       <div class="field">
         <%= f.label :address %><br />
         <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
       </div>
-      
+
       <div class="field">
         <%= f.label :telephone_number %><br />
         <%= f.text_field :telephone_number, autofocus: true, autocomplete: "telephone_number" %>
       </div>
-      
+
       <div class="field">
         <%= f.label :password %>
         <% if @minimum_password_length %>
@@ -58,20 +58,20 @@
         <% end %><br />
         <%= f.password_field :password, autocomplete: "new-password" %>
       </div>
-      
+
       <div class="field">
         <%= f.label :password_confirmation %><br />
         <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
       </div>
-      
+      <%= f.hidden_field :is_active, :value => true %>
       <div class="actions">
         <%= f.submit "Sign up" %>
       </div>
-      
+
     <% end %>
-    
+
     <%= render "customers/shared/links" %>
-    
+
     </div>
   <div/>
 </div>

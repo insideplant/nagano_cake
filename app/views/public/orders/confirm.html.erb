@@ -26,7 +26,6 @@
           <tr>
               <td>
                 <%= cart_item.item.name %>
-                <%= cart_item.item.name %>
               </td>
               <td>
                 ¥ <%= cart_item.item.price %>
@@ -92,9 +91,9 @@
             <span>お届け先</span>
           </td>
           <td>
+            <%= @order.postal_code.to_s.insert(3,"-") %>
+            <%= @order.address %></br>
             <%= @order.customer_name %>
-            <%= @order.postal_code %>
-            <%= @order.address %>
             <%= f.hidden_field :customer_id, :value => current_customer.id %>
             <%= f.hidden_field :customer_name, :value => @order.customer_name %>
             <%= f.hidden_field :postal_code, :value => @order.postal_code %>
