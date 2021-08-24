@@ -60,6 +60,8 @@ gem 'kaminari','~> 1.2.1'
 
 gem 'pry-byebug'
 
+gem 'dotenv-rails'
+
 group :production do
-  gem 'pg', '1.1.4'
+  gem 'mysql2'
 end
