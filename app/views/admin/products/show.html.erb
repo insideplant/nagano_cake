@@ -4,7 +4,7 @@
 
   <div class="row text-center">
     <div class="col-4">
-    <%= attachment_image_tag @item, :image, :fill, 350,350, fallback: "no_image.jpg", size:'150x150' %>
+    <%= attachment_image_tag @item, :image, :fill, 350,350, fallback: asset_path("no_image.jpg"), size:'150x150' %>
     </div>
     <div class="col-6 text-left">
       <table >
