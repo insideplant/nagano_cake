@@ -15,7 +15,7 @@ class Customer < ApplicationRecord
       customer.user_name = "Guest"
       customer.password = SecureRandom.urlsafe_base64
       customer.postal_code = "1111111"
-      customer.addresse = "1111111"
+      customer.address = "guest"
       customer.last_name = "Guest"
       customer.telephone_number = "11111111111"
       customer.first_name = "Guest"
