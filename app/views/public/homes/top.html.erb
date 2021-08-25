@@ -1,37 +1,36 @@
 <div class="container">
-    <div class="jumbotron">
-        <h1><span>ひとくちだけ、</span></br>
-        <span>試してみたい、色がある。</span></h1>
-        <% if customer_signed_in? %>
-         <%= link_to "Products", items_path,class: "btn btn-secondary btn-lg" %>
-         <div class="row md-6">
-            <h4><span>　ようこそ、ながのCAKEへ！!</span></h4>
-         </div>
-        <% else %>
-         <%= link_to "Sign Up", new_customer_registration_path,class: "btn btn-secondary btn-lg" %>
-         <div class="row">
-             <div><h5><span>　　ようこそ、ながのCAKEへ！</span></h5></div>
-         </div>
-         <div>
-              <p>このサイトは、ケーキ販売のECサイトになります。</br>
-            会員でない⽅も商品の閲覧はできますが、</br>
-            購⼊には会員登録が必要になります。</p>
-         </div>
+  <div class="jumbotron">
+    <h1><span>ひとくちだけ、</span></br>
+    <span>試してみたい、色がある。</span></h1>
+    <% if customer_signed_in? %>
+     <%= link_to "Products", items_path,class: "btn btn-secondary btn-lg" %>
+     <div class="row md-6">
+        <h4><span>ようこそ、ながのCAKEへ！!</span></h4>
+     </div>
+    <% else %>
+     <%= link_to "Sign Up", new_customer_registration_path,class: "btn btn-secondary btn-lg" %>
+     <div class="row">
+         <div><h5><span>ようこそ、ながのCAKEへ！</span></h5></div>
+     </div>
+     <div>
+          <p>このサイトは、ケーキ販売のECサイトになります。</br>
+        会員でない⽅も商品の閲覧はできますが、</br>
+        購⼊には会員登録が必要になります。</p>
+     </div>
 
-        <% end %>
-    </div>
+    <% end %>
+  </div>
 
-        <h2>New Products</h2>
-    <div class="row d-flex">
-        <% @items.each do |item| %>
-         <div class="col-sm-3">
-          <%= attachment_image_tag item, :image, size: "180x180", fallback: "no_image.jpg", size:'150x150' %>
-            <p>商品名 : <%= link_to item.name,item_path(item) %></p>
-            <p>価格　 : ¥<%= item.price %></p>
-         </div>
-        <% end %>
-        <%= paginate @items %>
-    </div>
-
+    <h2>New Products</h2>
+  <div class="row d-flex">
+    <% @items.each do |item| %>
+     <div class="col-sm-3">
+      <%= attachment_image_tag item, :image, size: "180x180", fallback: "no_image.jpg", size:'150x150' %>
+        <p>商品名 : <%= link_to item.name,item_path(item) %></p>
+        <p>価格　 : ¥<%= item.price %></p>
+     </div>
+    <% end %>
+    <%= paginate @items %>
+  </div>
 </div>
 
