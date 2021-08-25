@@ -8,16 +8,16 @@
         <h4><span>ようこそ、ながのCAKEへ！!</span></h4>
      </div>
     <% else %>
-     <%= link_to "Sign Up", new_customer_registration_path,class: "btn btn-secondary btn-lg" %>
-     <div class="row">
+      <%= link_to "Sign Up", new_customer_registration_path,class: "btn btn-secondary btn-lg" %>
+      <%= link_to 'Guest login（閲覧用）', customers_guest_sign_in_path, method: :post, class: "btn btn-danger btn-lg"  %>
+      <div class="row">
          <div><h5><span>ようこそ、ながのCAKEへ！</span></h5></div>
-     </div>
-     <div>
+      </div>
+      <div>
           <p>このサイトは、ケーキ販売のECサイトになります。</br>
         会員でない⽅も商品の閲覧はできますが、</br>
         購⼊には会員登録が必要になります。</p>
-     </div>
-
+      </div>
     <% end %>
   </div>
 
