@@ -24,15 +24,13 @@
     <h2>New Products</h2>
   <div class="row d-flex">
     <% @items.each do |item| %>
-     <div class="col-sm-3">
-      <object>
-      <%= attachment_image_tag item, :image, size: "180x180", fallback: "no_image.jpg", size: "150x150" %>
-        <p>商品名 : <%= link_to item.name,item_path(item) %></p>
-        <p>価格　 : ¥<%= item.price %></p>
-      </object>
-     </div>
+      <div class="col-sm-3">
+        <%= attachment_image_tag item, :image, size: "180x180" %>
+          <p>商品名 : <%= link_to item.name,item_path(item) %></p>
+          <p>価格　 : ¥<%= item.price %></p>
+      </div>
     <% end %>
-  </div>
     <%= paginate @items %>
+  </div>
 </div>
 
